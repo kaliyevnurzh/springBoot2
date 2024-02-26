@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="main-layout.html">
+
+<div layout:fragment="siteContent" style="min-height: 750px">
+    <form action="/addApplication" method="post">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <div class="mt-2">
+                    <span>ФИО :</span>
+                </div>
+                <div class="mt-2">
+                    <input type="text" class="form-control" name="userName" placeholder="ФИО">
+                </div>
+                <div class="mt-2">
+                    <span>Выберите курс :</span>
+                </div>
+                <div class="mt-2">
+                    <select name="courseName" class="form-control">
+                        <option value="Java Developer">Java Developer</option>
+                        <option value="Python Developer">Python Developer</option>
+                        <option value="Scala Developer">Scala Developer</option>
+                        <option value="Web">Web</option>
+                        <option value="Spring Framework">Spring Framework</option>
+                    </select>
+                </div>
+                <div class="mt-2">
+                    <span>Телефон :</span>
+                </div>
+                <div class="mt-2">
+                    <input type="text" class="form-control" name="phone" placeholder="Телефон">
+                </div>
+                <div class="mt-2">
+                    <span>Комментарии :</span>
+                </div>
+                <div class="mt-2">
+                    <textarea rows="5" name="commentary" class="form-control"></textarea>
+                </div>
+                <input type="hidden" name="handled" th:value="false">
+                <div class="mt-2">
+                    <button class="btn btn-success">Добавить Заявку</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</html>

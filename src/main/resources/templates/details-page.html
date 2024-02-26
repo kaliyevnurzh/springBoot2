@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="main-layout.html">
+
+<div layout:fragment="siteContent" style="min-height: 750px">
+    <div class="row">
+        <form action="/handle-application" method="post">
+            <div class="col-6 mx-auto">
+                <div class="text-center">
+                    <h5 th:if="${app.isHandled()==false}" class="text-danger">*** Новая необработанная заявка ***</h5>
+                    <h5 th:if="${app.isHandled()==true}" class="text-success">Обработанная заявка</h5>
+                </div>
+                <div class="mt-2">
+                    <span>ФИО :</span>
+                </div>
+                <div class="mt-2">
+                    <input type="text" readonly class="form-control" name="userName" th:value="${app.userName}">
+                </div>
+                <div class="mt-2">
+                    <span>Курс :</span>
+                </div>
+                <div class="mt-2">
+                    <input type="text" readonly class="form-control" name="courseName" th:value="${app.courseName}">
+                </div>
+                <div class="mt-2">
+                    <span>Телефон :</span>
+                </div>
+                <div class="mt-2">
+                    <input type="text" readonly class="form-control" name="phone" th:value="${app.phone}">
+                </div>
+                <div class="mt-2">
+                    <span>Комментарии :</span>
+                </div>
+                <div class="mt-2">
+                    <textarea rows="5" name="commentary" readonly class="form-control" th:text="${app.commentary}"></textarea>
+                </div>
+                <input type="hidden" name="handled" th:value="true">
+                <input type="hidden" name="id" th:value="${app.id}">
+                <div class="mt-2">
+                    <button class="btn btn-success me-2" th:if="${app.isHandled()==false}">Обработать Заявку</button>
+                    <a th:href="@{'delete-application?id=' + ${app.id}}" class="btn btn-danger">DELETE</a>
+                </div>
+            </div>
+        </form>
+<!--        <div class="col-6 mx-auto">-->
+<!--            <form action="/delete-application" method="post">-->
+<!--                <input type="hidden" name="id" th:value="${app.id}">-->
+<!--                <button class="btn btn-danger">Удалить Заявку</button>-->
+<!--            </form>-->
+<!--        </div>-->
+    </div>
+</div>
+
+</html>
